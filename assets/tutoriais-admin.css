@@ -1,0 +1,32 @@
+.flaneur-tutorials {max-width: 1280px;padding-top: 12px;}
+.flaneur-tutorials > h1 {font-weight: 600;}
+.flaneur-tutorials > p {color: #50575e;line-height: 1.6;}
+.flaneur-tutorials .tutorial-grid {display: grid;grid-template-columns: repeat(3, minmax(0, 1fr));gap: 22px;margin-top: 28px;align-items: stretch;}
+.flaneur-tutorials .tutorial-card,
+.flaneur-tutorials .tutorial-empty {padding: 20px;background: #fff;border: 1px solid #dcdcde;border-radius: 12px;min-width: 0;box-shadow: 0 2px 6px rgba(0, 0, 0, .03);}
+.flaneur-tutorials .tutorial-card {display: flex;flex-direction: column;}
+.flaneur-tutorials .tutorial-card h2 {margin: 0 0 16px;min-height: 2.8em;font-size: 18px;font-weight: 600;line-height: 1.4;overflow-wrap: anywhere;color: #1d2327;}
+.flaneur-tutorials .tutorial-player {width: 100%;}
+.flaneur-tutorials .tutorial-player :is(video, iframe) {display: block;width: 100%;max-width: 100%;border: 0;border-radius: 8px;background: #111;}
+.flaneur-tutorials .tutorial-player video,
+.flaneur-tutorials .tutorial-embed {aspect-ratio: 16 / 9;height: auto;object-fit: contain;}
+.flaneur-tutorials .tutorial-description {line-height: 1.65;overflow-wrap: anywhere;margin: 18px 0;}
+.flaneur-tutorials .tutorial-description:empty {display: none;}
+.flaneur-tutorials .tutorial-description > :first-child {margin-top: 0;}
+.flaneur-tutorials .tutorial-description > :last-child {margin-bottom: 0;}
+.flaneur-tutorials .tutorial-card > .button {align-self: flex-start;margin-top: 18px;}
+.flaneur-tutorials .tutorial-description img {max-width: 100%;height: auto;}
+@media (max-width: 1200px) {
+    .flaneur-tutorials .tutorial-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
+}
+@media (max-width: 782px) {
+    .flaneur-tutorials .tutorial-grid {grid-template-columns: minmax(0, 1fr);}
+    .flaneur-tutorials .tutorial-card h2 {min-height: 0;}
+}
+@media (max-width: 600px) {
+    .flaneur-tutorials .tutorial-card {padding: 16px;}
+    .flaneur-tutorials .tutorial-grid {gap: 16px;}
+}
+
+.flaneur-tutorials .tutorial-playlist {margin: 24px 0;padding: 24px;background: #fff;border: 1px solid #dcdcde;border-radius: 12px;}
+.flaneur-tutorials .tutorial-playlist .tutorial-player {max-width: 960px;}
