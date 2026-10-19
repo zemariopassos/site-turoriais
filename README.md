@@ -1,4 +1,4 @@
-# site-turoriais — 1.0.0
+# site-turoriais — 1.1.0
 
 Plugin independente do tema para ensinar usuários a operar o WordPress.
 
@@ -82,5 +82,32 @@ Para publicar uma alteração:
 Para atualizar um site, envie o novo ZIP pelo instalador de plugins do WordPress
 e escolha substituir a versão instalada. Os cadastros e as configurações são mantidos.
 
-Manter o código no GitHub permite versionar e distribuir o plugin; por si só,
-isso não habilita avisos nem atualizações automáticas no painel do WordPress.
+Desde a versão 1.1.0, o plugin consulta as Releases estáveis do repositório
+`zemariopassos/site-turoriais` e integra as versões ao painel nativo de Plugins.
+Quando publicarmos uma release mais recente com o anexo `site-turoriais.zip`,
+o WordPress exibirá **Atualizar agora**. Não basta alterar arquivos na branch main:
+é necessário publicar a Release com a tag da versão e o ZIP completo.
+
+Na primeira instalação, envie o ZIP 1.1.0 manualmente. A partir dele, use o botão
+**Atualizar agora** nas próximas versões. Em **Tutoriais → Atualizações**, você
+pode conferir a conexão e clicar em **Verificar atualizações agora**.
+As consultas usam cache de seis horas (uma hora em caso de falha), além da
+verificação periódica do próprio WordPress. O plugin não ativa instalações
+automáticas sem sua escolha. As opções nativas do WordPress continuam valendo.
+
+O repositório público funciona sem token. Se você torná-lo privado futuramente,
+adicione no `wp-config.php`, antes da linha final de configuração:
+
+```php
+define( 'SITE_TURORIAIS_GITHUB_TOKEN', 'SEU_TOKEN_DE_LEITURA' );
+```
+
+Use um token refinado restrito a esse repositório com Contents: Read-only.
+Não inclua o token no plugin, no ZIP ou no GitHub. Se o token expirar ou não
+tiver acesso, as atualizações ficam indisponíveis até corrigir a configuração;
+a biblioteca de vídeos continua funcionando.
+
+Para verificar versões e baixar atualizações, o servidor do site se conecta a
+`api.github.com` e ao armazenamento de arquivos do GitHub. O ZIP é baixado por
+HTTPS e seu SHA-256 é conferido quando fornecido pela API. O pacote deve conter
+a pasta `site-turoriais`, incluindo `includes/github-updater.php` e `assets`.

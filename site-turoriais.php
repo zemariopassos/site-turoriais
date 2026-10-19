@@ -2,7 +2,8 @@
 /**
  * Plugin Name: site-turoriais
  * Description: Biblioteca de tutoriais no painel com vídeos MP4 e playlists automáticas do YouTube. Independente do tema.
- * Version: 1.0.0
+ * Version: 1.1.0
+ * Update URI: https://github.com/zemariopassos/site-turoriais
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * License: GPL-2.0-or-later
@@ -11,6 +12,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+define( 'SITE_TURORIAIS_VERSION', '1.1.0' );
+require_once __DIR__ . '/includes/github-updater.php';
+new Site_Turoriais_GitHub_Updater( __FILE__ );
 
 /** Biblioteca de videos exclusiva do painel administrativo. */
 function site_turoriais_register_tutorials() {
@@ -102,11 +106,11 @@ function site_turoriais_tutorials_assets() {
         return;
     }
     if ( 'toplevel_page_flaneur-tutoriais' === $screen->id ) {
-        wp_enqueue_style( 'site-turoriais', plugins_url( 'assets/tutoriais-admin.css', __FILE__ ), array(), '1.0.0' );
+        wp_enqueue_style( 'site-turoriais', plugins_url( 'assets/tutoriais-admin.css', __FILE__ ), array(), SITE_TURORIAIS_VERSION );
     }
     if ( 'tutoriais' === $screen->post_type && 'post' === $screen->base && current_user_can( 'manage_options' ) ) {
         wp_enqueue_media();
-        wp_enqueue_script( 'site-turoriais', plugins_url( 'assets/tutoriais-admin.js', __FILE__ ), array( 'jquery', 'media-views' ), '1.0.0', true );
+        wp_enqueue_script( 'site-turoriais', plugins_url( 'assets/tutoriais-admin.js', __FILE__ ), array( 'jquery', 'media-views' ), SITE_TURORIAIS_VERSION, true );
     }
 }
 add_action( 'admin_enqueue_scripts', 'site_turoriais_tutorials_assets' );
